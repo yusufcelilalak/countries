@@ -1,0 +1,25 @@
+.card {
+  min-height: 75%;
+  margin-bottom: 5rem !important;
+}
+
+.search-input {
+  width: 10rem;
+}
+
+.country-table {
+  width: 98% !important;
+}
+
+.table-head th {
+  min-height: 3rem;
+  vertical-align: middle;
+}
+
+.capital-search {
+  width: 10rem;
+}
+
+.footer {
+  height: 3rem;
+}
