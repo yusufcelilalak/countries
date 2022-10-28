@@ -60,12 +60,12 @@ const TableComponent = () => {
     <div
       className={`row p-0 m-0 w-100 h-100 align-items-center  ${styles.container}`}
     >
-      <Card className={`w-75 w-sm-96 mx-auto my-5 p-0 ${styles.card}`}>
+      <Card className={`w-75 mx-auto my-5 p-0 ${styles.card}`}>
         <h1 className="text-center my-3">Countries</h1>
         <div className="w-100">
           <Form.Control
             onChange={searchHandler}
-            className={`w-25 w-sm-60 me-4 float-md-end ${styles["search-input"]}`}
+            className={`w-25 me-md-4 float-md-end ${styles["search-input"]}`}
             type="text"
             placeholder="Search"
           />

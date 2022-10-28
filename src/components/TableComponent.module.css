@@ -17,7 +17,7 @@
 }
 
 .capital-search {
-  width: 10rem;
+  min-width: 9rem;
 }
 
 .footer {
@@ -29,6 +29,10 @@
     min-width: 96% !important;
     margin: 3rem auto !important;
     font-size: 0.8rem;
+  }
+
+  .capital-search {
+    font-size: 0.8rem !important;
   }
 
   .search-input {
