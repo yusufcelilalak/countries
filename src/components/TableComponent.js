@@ -1,7 +1,7 @@
 import styles from "./TableComponent.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
-import { Form, Table } from "react-bootstrap";
+import { Form, Spinner, Table } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DataRow from "./DataRow";
@@ -23,7 +23,6 @@ const TableComponent = () => {
 
       setCountryData(data);
       setFilteredData(data);
-      console.log("hey");
     } catch (error) {
       console.log(error.message);
     }
@@ -58,45 +57,55 @@ const TableComponent = () => {
   };
 
   return (
-    <div className={`row w-100 h-100 align-items-center  ${styles.container}`}>
+    <div
+      className={`row p-0 m-0 w-100 h-100 align-items-center  ${styles.container}`}
+    >
       <Card className={`w-75 mx-auto my-5 p-0 ${styles.card}`}>
         <h1 className="text-center my-3">Countries</h1>
-        <div>
+        <div className="w-100">
           <Form.Control
             onChange={searchHandler}
-            className={`w-25 me-4 float-end ${styles["search-input"]}`}
+            className={`w-25 me-4 float-md-end ${styles["search-input"]}`}
             type="text"
             placeholder="Search"
           />
         </div>
-        <div className="table-responsive my-4">
-          <Table
-            className={`mx-auto table-hover align-middle text-center ${styles["country-table"]}`}
-          >
-            <thead>
-              <tr className={` ${styles["table-head"]}`}>
-                <th className="w-25">Name</th>
-                <th className="d-flex justify-content-center align-items-center">
-                  <div className="me-3">Capital</div>
-                  <Form.Control
-                    onChange={searchByCapitalHandler}
-                    className={`p-1 ${styles["capital-search"]}`}
-                    type="text"
-                    placeholder="Search by Capital"
-                  />
-                </th>
-                <th className="w-25">Region</th>
-                <th className="w-25">Flag</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredData &&
-                filteredData.map((country) => (
+
+        {filteredData === null ? (
+          <Spinner
+            className="mt-5 mx-auto"
+            animation="border"
+            variant="success"
+          />
+        ) : (
+          <div className="table-responsive my-4">
+            <Table
+              className={`mx-auto table-hover align-middle text-center ${styles["country-table"]}`}
+            >
+              <thead>
+                <tr className={` ${styles["table-head"]}`}>
+                  <th className="w-25 ws-50">Name</th>
+                  <th className="d-flex justify-content-center align-items-center">
+                    <div className="me-3">Capital</div>
+                    <Form.Control
+                      onChange={searchByCapitalHandler}
+                      className={`p-1 ${styles["capital-search"]}`}
+                      type="text"
+                      placeholder="Search by Capital"
+                    />
+                  </th>
+                  <th className="w-25">Region</th>
+                  <th className="w-25">Flag</th>
+                </tr>
+              </thead>
+              <tbody className="">
+                {filteredData.map((country) => (
                   <DataRow key={country.name} country={country} />
                 ))}
-            </tbody>
-          </Table>
-        </div>
+              </tbody>
+            </Table>
+          </div>
+        )}
       </Card>
       <footer className={styles.footer}></footer>
     </div>

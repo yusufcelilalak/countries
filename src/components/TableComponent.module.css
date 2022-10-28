@@ -23,3 +23,16 @@
 .footer {
   height: 3rem;
 }
+
+@media (max-width: 767px) {
+  .card {
+    width: 96% !important;
+    margin: 3rem auto !important;
+    font-size: 0.8rem;
+  }
+
+  .search-input {
+    width: 60% !important;
+    margin: auto !important;
+  }
+}
